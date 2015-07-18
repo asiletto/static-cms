@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>it.siletto</groupId>
-	<artifactId>staticParser</artifactId>
+	<artifactId>static-parser</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<name>staticParser</name>
