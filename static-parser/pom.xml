@@ -6,7 +6,7 @@
 	<artifactId>static-parser</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>staticParser</name>
+	<name>static-parser</name>
 
 	<dependencies>
 
