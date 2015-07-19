@@ -1,5 +1,7 @@
 package it.siletto.sp.dto;
 
+import java.util.List;
+
 public class Site {
 
 	private String jqueryJs;
@@ -7,7 +9,9 @@ public class Site {
 	private String bootstrapCss;
 	private String copyright;
 	private String author;
-	
+	private NavBar navbar;
+	private List<Page> pages;
+
 	public String getJqueryJs() {
 		return jqueryJs;
 	}
@@ -37,5 +41,17 @@ public class Site {
 	}
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+	public NavBar getNavbar() {
+		return navbar;
+	}
+	public void setNavbar(NavBar navbar) {
+		this.navbar = navbar;
+	}
+	public List<Page> getPages() {
+		return pages;
+	}
+	public void setPages(List<Page> pages) {
+		this.pages = pages;
 	}
 }

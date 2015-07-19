@@ -2,8 +2,6 @@ package it.siletto.sp.dto;
 
 public class Page {
 
-	private Site site;
-	private NavBar navbar;
 	private String title;
 	private String subtitle;
 	private String description;
@@ -40,18 +38,6 @@ public class Page {
 	}
 	public void setOutput(String output) {
 		this.output = output;
-	}
-	public NavBar getNavbar() {
-		return navbar;
-	}
-	public void setNavbar(NavBar navbar) {
-		this.navbar = navbar;
-	}
-	public Site getSite() {
-		return site;
-	}
-	public void setSite(Site site) {
-		this.site = site;
 	}
 	public String getSubtitle() {
 		return subtitle;

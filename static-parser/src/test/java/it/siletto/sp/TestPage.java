@@ -43,39 +43,40 @@ public class TestPage {
 		cfg = TestBuilder.configuration(templateDir);
 
 		Site site = TestBuilder.localSite();
-		NavBar navbar = TestBuilder.navbar();
-		
+		site.setNavbar(TestBuilder.navbar());
+
 		List<Page> pages = new ArrayList<Page>();
-		pages.add(TestBuilder.createPage("index.ftl", "index.html", "Site name", null, "test freemarker", true, site, navbar));
-		pages.add(TestBuilder.createPage("404.ftl", "404.html", "404", "Page Not Found", "test freemarker", false, site, navbar));
-		pages.add(TestBuilder.createPage("about.ftl", "about.html", "About", "Subheading", "test freemarker", false, site, navbar));
-		pages.add(TestBuilder.createPage("blog-home-1.ftl", "blog-home-1.html", "Blog Home 1", "Subheading", "test freemarker", false, site, navbar));
-		pages.add(TestBuilder.createPage("blog-home-2.ftl", "blog-home-2.html", "Blog Home 2", "Subheading", "test freemarker", false, site, navbar));
-		pages.add(TestBuilder.createPage("blog-post.ftl", "blog-post.html", "Blog Post", "Subheading", "test freemarker", false, site, navbar));
-		pages.add(TestBuilder.createPage("contact.ftl", "contact.html", "Contact", "Subheading", "test freemarker", false, site, navbar));
-		pages.add(TestBuilder.createPage("faq.ftl", "faq.html", "FAQ", "Subheading", "test freemarker", false, site, navbar));
-		pages.add(TestBuilder.createPage("full-width.ftl", "full-width.html", "Full width", "Subheading", "test freemarker", false, site, navbar));
-		pages.add(TestBuilder.createPage("portfolio-1-col.ftl", "portfolio-1-col.html", "One Column Portfolio", "Subheading", "test freemarker", false, site, navbar));
-		pages.add(TestBuilder.createPage("portfolio-2-col.ftl", "portfolio-2-col.html", "Two Column Portfolio", "Subheading", "test freemarker", false, site, navbar));
-		pages.add(TestBuilder.createPage("portfolio-3-col.ftl", "portfolio-3-col.html", "Three Column Portfolio", "Subheading", "test freemarker", false, site, navbar));
-		pages.add(TestBuilder.createPage("portfolio-4-col.ftl", "portfolio-4-col.html", "Four Column Portfolio", "Subheading", "test freemarker", false, site, navbar));
-		pages.add(TestBuilder.createPage("portfolio-item.ftl", "portfolio-item.html", "Portfolio Item", "Subheading", "test freemarker", false, site, navbar));
-		pages.add(TestBuilder.createPage("pricing.ftl", "pricing.html", "Pricing", "Subheading", "test freemarker", false, site, navbar));
-		pages.add(TestBuilder.createPage("services.ftl", "services.html", "Services", "Subheading", "test freemarker", false, site, navbar));
-		pages.add(TestBuilder.createPage("sidebar.ftl", "sidebar.html", "Sidebar", "Subheading", "test freemarker", false, site, navbar));
+		pages.add(TestBuilder.createPage("index.ftl", "index.html", "Site name", null, "test freemarker", true));
+		pages.add(TestBuilder.createPage("404.ftl", "404.html", "404", "Page Not Found", "test freemarker", false));
+		pages.add(TestBuilder.createPage("about.ftl", "about.html", "About", "Subheading", "test freemarker", false));
+		pages.add(TestBuilder.createPage("blog-home-1.ftl", "blog-home-1.html", "Blog Home 1", "Subheading", "test freemarker", false));
+		pages.add(TestBuilder.createPage("blog-home-2.ftl", "blog-home-2.html", "Blog Home 2", "Subheading", "test freemarker", false));
+		pages.add(TestBuilder.createPage("blog-post.ftl", "blog-post.html", "Blog Post", "Subheading", "test freemarker", false));
+		pages.add(TestBuilder.createPage("contact.ftl", "contact.html", "Contact", "Subheading", "test freemarker", false));
+		pages.add(TestBuilder.createPage("faq.ftl", "faq.html", "FAQ", "Subheading", "test freemarker", false));
+		pages.add(TestBuilder.createPage("full-width.ftl", "full-width.html", "Full width", "Subheading", "test freemarker", false));
+		pages.add(TestBuilder.createPage("portfolio-1-col.ftl", "portfolio-1-col.html", "One Column Portfolio", "Subheading", "test freemarker", false));
+		pages.add(TestBuilder.createPage("portfolio-2-col.ftl", "portfolio-2-col.html", "Two Column Portfolio", "Subheading", "test freemarker", false));
+		pages.add(TestBuilder.createPage("portfolio-3-col.ftl", "portfolio-3-col.html", "Three Column Portfolio", "Subheading", "test freemarker", false));
+		pages.add(TestBuilder.createPage("portfolio-4-col.ftl", "portfolio-4-col.html", "Four Column Portfolio", "Subheading", "test freemarker", false));
+		pages.add(TestBuilder.createPage("portfolio-item.ftl", "portfolio-item.html", "Portfolio Item", "Subheading", "test freemarker", false));
+		pages.add(TestBuilder.createPage("pricing.ftl", "pricing.html", "Pricing", "Subheading", "test freemarker", false));
+		pages.add(TestBuilder.createPage("services.ftl", "services.html", "Services", "Subheading", "test freemarker", false));
+		pages.add(TestBuilder.createPage("sidebar.ftl", "sidebar.html", "Sidebar", "Subheading", "test freemarker", false));
+		site.setPages(pages);
 		
 		for (Page page : pages) {
-			writePage(page);
+			writePage(site, page);
 		}
 		
 
 	  }
 
-	public static void writePage(Page page) throws IOException, TemplateException{
+	public static void writePage(Site site, Page page) throws IOException, TemplateException{
 	    Template template = cfg.getTemplate(page.getInput());
 
-	    resetNavBar(page);
-	    selectMenus(page);
+	    resetNavBar(site, page);
+	    selectMenus(site, page);
 	    
 	    Writer fileWriter = new FileWriter(new File(outputDir+page.getOutput()));
 	    try {
@@ -85,8 +86,8 @@ public class TestPage {
 	    }
 	}
 
-	private static void selectMenus(Page page) {
-		for(MenuItem first : page.getNavbar().getMenu()){
+	private static void selectMenus(Site site, Page page) {
+		for(MenuItem first : site.getNavbar().getMenu()){
 			if(page.getOutput().equals(first.getHref()))
 				first.setSelected(true);
 			for(MenuItem second : first.getChildrens())
@@ -97,8 +98,8 @@ public class TestPage {
 		}
 	}
 
-	private static void resetNavBar(Page page) {
-		for(MenuItem first : page.getNavbar().getMenu()){
+	private static void resetNavBar(Site site, Page page) {
+		for(MenuItem first : site.getNavbar().getMenu()){
 			first.setSelected(false);
 			for(MenuItem second : first.getChildrens()){
 				second.setSelected(false);

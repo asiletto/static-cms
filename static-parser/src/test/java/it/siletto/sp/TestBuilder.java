@@ -20,14 +20,12 @@ import java.util.Locale;
 
 public class TestBuilder {
 
-	public static Page createPage(String input, String output, String title, String subtitle, String description, boolean includeCarousel, Site site, NavBar navbar){
+	public static Page createPage(String input, String output, String title, String subtitle, String description, boolean includeCarousel){
 		Page p = new Page();
 		p.setDescription(description);
 		p.setTitle(title);
 		p.setSubtitle(subtitle);
 		p.setIncludeCarousel(includeCarousel);
-		p.setSite(site);
-		p.setNavbar(navbar);
 		p.setInput(input);
 		p.setOutput(output);
 		return p;
