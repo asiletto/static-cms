@@ -8,7 +8,7 @@ import org.mongodb.morphia.annotations.Reference;
 public class Site extends BaseEntity {
 
 	@Id
-	private String name;
+	private String id;
 	private String jqueryJs;
 	private String bootstrapJs;
 	private String bootstrapCss;
@@ -54,10 +54,11 @@ public class Site extends BaseEntity {
 	public void setNavbar(NavBar navbar) {
 		this.navbar = navbar;
 	}
-	public String getName() {
-		return name;
+	public String getId() {
+		return id;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setId(String id) {
+		this.id = id;
 	}
+
 }

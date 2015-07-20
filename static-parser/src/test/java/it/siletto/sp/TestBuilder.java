@@ -24,7 +24,7 @@ public class TestBuilder {
 	protected BasePersistenceService service;
 
 	public Page createPage(String input, String output, String title, String subtitle, String description, boolean includeCarousel, Site site){
-		Page p = service.getPage(site.getName(), output);
+		Page p = service.getPage(site.getId(), output);
 		if(p==null)
 			p = new Page();
 		p.setDescription(description);
@@ -34,7 +34,7 @@ public class TestBuilder {
 		p.setInput(input);
 		p.setOutput(output);
 		p.setSite(site);
-		p.setId(site.getName() + (p.getOutput().startsWith("/") ? "" : "/") + p.getOutput());
+		p.setId(site.getId() + (p.getOutput().startsWith("/") ? "" : "/") + p.getOutput());
 		return p;
 	}
 
@@ -44,7 +44,7 @@ public class TestBuilder {
 		if(s==null)
 			s = new Site();
 
-		s.setName("my.site.it");
+		s.setId("my.site.it");
 		s.setBootstrapCss("css/bootstrap.min.css");
 		s.setBootstrapJs("js/bootstrap.min.js");
 		s.setJqueryJs("js/jquery.js");
@@ -58,7 +58,7 @@ public class TestBuilder {
 		if(s==null)
 			s = new Site();
 
-		s.setName("my.site.it");
+		s.setId("my.site.it");
 		s.setBootstrapCss("//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css");
 		s.setBootstrapJs("//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js");
 		s.setJqueryJs("//code.jquery.com/jquery-1.11.3.min.js");
@@ -68,11 +68,11 @@ public class TestBuilder {
 	}
 
 	public NavBar navbar(Site site){
-		NavBar navbar = service.getNavBarBySite(site.getName());
+		NavBar navbar = service.getNavBarBySite(site.getId());
 		if(navbar == null)
 			navbar = new NavBar();
 		
-		navbar.setId(site.getName() + "/NAVBAR");
+		navbar.setId(site.getId() + "/NAVBAR");
 		
 		navbar.setBrand(createHref("Start Bootstrap", "index.html"));
 		navbar.setMenu(new ArrayList<MenuItem>());

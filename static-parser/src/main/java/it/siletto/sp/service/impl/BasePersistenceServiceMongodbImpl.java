@@ -17,7 +17,7 @@ public class BasePersistenceServiceMongodbImpl implements BasePersistenceService
 
 	@Override
 	public Site getSite(String id) {
-		return datastore.find(Site.class, "name", id).get();
+		return datastore.find(Site.class, "_id", id).get();
 	}
 
 	@Override
