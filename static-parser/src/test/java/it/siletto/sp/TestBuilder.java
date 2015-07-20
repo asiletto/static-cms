@@ -11,6 +11,7 @@ import it.siletto.sp.dto.MenuItem;
 import it.siletto.sp.dto.NavBar;
 import it.siletto.sp.dto.Page;
 import it.siletto.sp.dto.Site;
+import it.siletto.sp.service.BasePersistenceService;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,9 +20,13 @@ import java.util.List;
 import java.util.Locale;
 
 public class TestBuilder {
+	
+	protected BasePersistenceService service;
 
-	public static Page createPage(String input, String output, String title, String subtitle, String description, boolean includeCarousel, Site site){
-		Page p = new Page();
+	public Page createPage(String input, String output, String title, String subtitle, String description, boolean includeCarousel, Site site){
+		Page p = service.getPage(site.getName(), output);
+		if(p==null)
+			p = new Page();
 		p.setDescription(description);
 		p.setTitle(title);
 		p.setSubtitle(subtitle);
@@ -34,9 +39,11 @@ public class TestBuilder {
 	}
 
 	
-	public static Site localSite(Site old){
+	public Site localSite(){
+		Site s = service.getSite("my.site.it");
+		if(s==null)
+			s = new Site();
 
-		Site s = old!=null?old:new Site();
 		s.setName("my.site.it");
 		s.setBootstrapCss("css/bootstrap.min.css");
 		s.setBootstrapJs("js/bootstrap.min.js");
@@ -46,8 +53,11 @@ public class TestBuilder {
 		return s;
 	}
 
-	public static Site cdnSite(Site old){
-		Site s = old!=null?old:new Site();
+	public Site cdnSite(){
+		Site s = service.getSite("my.site.it");
+		if(s==null)
+			s = new Site();
+
 		s.setName("my.site.it");
 		s.setBootstrapCss("//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css");
 		s.setBootstrapJs("//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js");
@@ -57,8 +67,11 @@ public class TestBuilder {
 		return s;
 	}
 
-	public static NavBar navbar(Site site){
-		NavBar navbar = new NavBar();
+	public NavBar navbar(Site site){
+		NavBar navbar = service.getNavBarBySite(site.getName());
+		if(navbar == null)
+			navbar = new NavBar();
+		
 		navbar.setId(site.getName() + "/NAVBAR");
 		
 		navbar.setBrand(createHref("Start Bootstrap", "index.html"));
@@ -93,7 +106,7 @@ public class TestBuilder {
 		return navbar;
 	}
 	
-	public static MenuItem createMenu(String label, String href, boolean selected){
+	public MenuItem createMenu(String label, String href, boolean selected){
 		MenuItem m = new MenuItem();
 		m.setLabel(label);
 		if(href!=null)
@@ -103,13 +116,14 @@ public class TestBuilder {
 		return m;
 	}
 	
-	public static Anchor createHref(String label, String href){
+	public Anchor createHref(String label, String href){
 		Anchor a = new Anchor();
 		a.setLabel(label);
 		a.setHref(href);
 		return a;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public static Configuration configuration(String[] base) throws IOException{
 	    Configuration cfg = new Configuration();
 	    List<TemplateLoader> loaders = new ArrayList<TemplateLoader>();
@@ -124,5 +138,15 @@ public class TestBuilder {
 	    cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
 
 	    return cfg;
+	}
+
+
+	public BasePersistenceService getService() {
+		return service;
+	}
+
+
+	public void setService(BasePersistenceService service) {
+		this.service = service;
 	}
 }

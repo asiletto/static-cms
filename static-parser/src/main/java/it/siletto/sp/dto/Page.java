@@ -1,6 +1,5 @@
 package it.siletto.sp.dto;
 
-import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Reference;
@@ -8,7 +7,6 @@ import org.mongodb.morphia.annotations.Reference;
 @Entity(value = "page")
 public class Page extends BaseEntity {
 
-	
 	@Id
 	private String id;
 	
