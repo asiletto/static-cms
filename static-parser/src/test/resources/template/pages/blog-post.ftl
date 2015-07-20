@@ -11,10 +11,6 @@
 
 	<#include "navbar.ftl">
 
-	<#if includeCarousel>
-		<#include "carousel.ftl">
-	</#if>
-
     <div class="container">
 
 		<#include "row-breadcrumbs.ftl">

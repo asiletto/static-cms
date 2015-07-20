@@ -1,10 +1,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="${description}">
+    <meta name="description" content="${page.description}">
     <meta name="author" content="${site.author}">
 
-    <title>${title}</title>
+    <title>${page.title}</title>
 
     <link rel="stylesheet" href="${site.bootstrapCss}">
     <link href="css/modern-business.css" rel="stylesheet">

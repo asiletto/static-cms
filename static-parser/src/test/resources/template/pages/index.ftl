@@ -11,7 +11,7 @@
 
 	<#include "navbar.ftl">
 
-	<#if includeCarousel>
+	<#if page.includeCarousel>
 		<#include "carousel.ftl">
 	</#if>
 

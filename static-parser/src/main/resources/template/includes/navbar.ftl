@@ -7,12 +7,12 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-			<a class="navbar-brand" href="${navbar.brand.href}">${navbar.brand.label}</a>
+			<a class="navbar-brand" href="${site.navbar.brand.href}">${site.navbar.brand.label}</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-<#list navbar.menu as item>
+<#list site.navbar.menu as item>
 	<#if item.href??>
 					<li<#if item.selected> class="active"</#if>><a href="${item.href}">${item.label}</a></li>
 	<#else>

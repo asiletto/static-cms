@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
@@ -78,9 +79,14 @@ public class TestPage {
 	    resetNavBar(site, page);
 	    selectMenus(site, page);
 	    
+	    HashMap<String,Object> data = new HashMap<String,Object>();
+	    data.put("site", site);
+	    data.put("page", page);
+
+	    
 	    Writer fileWriter = new FileWriter(new File(outputDir+page.getOutput()));
 	    try {
-	      template.process(page, fileWriter);
+	      template.process(data, fileWriter);
 	    } finally {
 	      fileWriter.close();
 	    }
