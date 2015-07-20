@@ -1,11 +1,14 @@
 package it.siletto.sp.dto;
 
 import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Reference;
 
 @Entity(value = "site")
 public class Site extends BaseEntity {
 
+	@Id
+	private String name;
 	private String jqueryJs;
 	private String bootstrapJs;
 	private String bootstrapCss;
@@ -50,5 +53,11 @@ public class Site extends BaseEntity {
 	}
 	public void setNavbar(NavBar navbar) {
 		this.navbar = navbar;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 }

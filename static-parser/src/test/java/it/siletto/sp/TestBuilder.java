@@ -29,12 +29,15 @@ public class TestBuilder {
 		p.setInput(input);
 		p.setOutput(output);
 		p.setSite(site);
+		p.setId(site.getName() + (p.getOutput().startsWith("/") ? "" : "/") + p.getOutput());
 		return p;
 	}
 
 	
-	public static Site localSite(){
-		Site s = new Site();
+	public static Site localSite(Site old){
+
+		Site s = old!=null?old:new Site();
+		s.setName("my.site.it");
 		s.setBootstrapCss("css/bootstrap.min.css");
 		s.setBootstrapJs("js/bootstrap.min.js");
 		s.setJqueryJs("js/jquery.js");
@@ -43,8 +46,9 @@ public class TestBuilder {
 		return s;
 	}
 
-	public static Site cdnSite(){
-		Site s = new Site();
+	public static Site cdnSite(Site old){
+		Site s = old!=null?old:new Site();
+		s.setName("my.site.it");
 		s.setBootstrapCss("//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css");
 		s.setBootstrapJs("//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js");
 		s.setJqueryJs("//code.jquery.com/jquery-1.11.3.min.js");
@@ -53,8 +57,9 @@ public class TestBuilder {
 		return s;
 	}
 
-	public static NavBar navbar(){
+	public static NavBar navbar(Site site){
 		NavBar navbar = new NavBar();
+		navbar.setId(site.getName() + "/NAVBAR");
 		
 		navbar.setBrand(createHref("Start Bootstrap", "index.html"));
 		navbar.setMenu(new ArrayList<MenuItem>());

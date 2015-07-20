@@ -1,17 +1,12 @@
 package it.siletto.sp.dto;
 
-import org.bson.types.ObjectId;
-import org.mongodb.morphia.annotations.Id;
+import java.util.Date;
+
 import org.mongodb.morphia.annotations.PrePersist;
 import org.mongodb.morphia.annotations.Version;
 
-import java.util.Date;
-
 public abstract class BaseEntity {
 
-  @Id
-  protected ObjectId id;
-  
   protected Date creationDate;
 
   protected Date lastChange;
@@ -21,10 +16,6 @@ public abstract class BaseEntity {
 
   public BaseEntity() {
     super();
-  }
-
-  public ObjectId getId() {
-    return id;
   }
 
   public Date getCreationDate() {
@@ -40,7 +31,5 @@ public abstract class BaseEntity {
     this.creationDate = (creationDate == null) ? new Date() : creationDate;
     this.lastChange = (lastChange == null) ? creationDate : new Date();
   }
-
-  //public abstract String toString();
 
 }

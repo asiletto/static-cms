@@ -43,8 +43,8 @@ public class TestPage {
 		
 		cfg = TestBuilder.configuration(templateDir);
 
-		Site site = TestBuilder.localSite();
-		site.setNavbar(TestBuilder.navbar());
+		Site site = TestBuilder.localSite(null);
+		site.setNavbar(TestBuilder.navbar(site));
 
 		List<Page> pages = new ArrayList<Page>();
 		pages.add(TestBuilder.createPage("index.ftl", "index.html", "Site name", null, "test freemarker", true, site));

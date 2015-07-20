@@ -13,8 +13,12 @@ public class TestPageMongodb {
 	
 	public static void main(String[] args) throws Exception {
 
-		Site site = TestBuilder.localSite();
-		site.setNavbar(TestBuilder.navbar());
+		Datastore ds = MongoDB.instance().getDatabase(new Class[]{BaseEntity.class});
+
+		Site old = ds.find(Site.class, "_id", "my.site.it").get();
+		
+		Site site = TestBuilder.localSite(old);
+		site.setNavbar(TestBuilder.navbar(site));
 
 		List<Page> pages = new ArrayList<Page>();
 		pages.add(TestBuilder.createPage("index.ftl", "index.html", "Site name", null, "test freemarker", true, site));
@@ -34,11 +38,9 @@ public class TestPageMongodb {
 		pages.add(TestBuilder.createPage("pricing.ftl", "pricing.html", "Pricing", "Subheading", "test freemarker", false, site));
 		pages.add(TestBuilder.createPage("services.ftl", "services.html", "Services", "Subheading", "test freemarker", false, site));
 		pages.add(TestBuilder.createPage("sidebar.ftl", "sidebar.html", "Sidebar", "Subheading", "test freemarker", false, site));
-
-		Datastore ds = MongoDB.instance().getDatabase(new Class[]{BaseEntity.class});
-
+		
 		ds.save(site.getNavbar());
-
+			
 		ds.save(site);
 		
 		for (Page page : pages) {
