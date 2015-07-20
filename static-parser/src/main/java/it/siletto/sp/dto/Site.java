@@ -1,17 +1,20 @@
 package it.siletto.sp.dto;
 
-import java.util.List;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Reference;
 
-public class Site {
+@Entity(value = "site")
+public class Site extends BaseEntity {
 
 	private String jqueryJs;
 	private String bootstrapJs;
 	private String bootstrapCss;
 	private String copyright;
 	private String author;
-	private NavBar navbar;
-	private List<Page> pages;
 
+	@Reference
+	private NavBar navbar;
+  
 	public String getJqueryJs() {
 		return jqueryJs;
 	}
@@ -47,11 +50,5 @@ public class Site {
 	}
 	public void setNavbar(NavBar navbar) {
 		this.navbar = navbar;
-	}
-	public List<Page> getPages() {
-		return pages;
-	}
-	public void setPages(List<Page> pages) {
-		this.pages = pages;
 	}
 }

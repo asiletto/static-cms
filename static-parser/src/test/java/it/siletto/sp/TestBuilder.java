@@ -20,7 +20,7 @@ import java.util.Locale;
 
 public class TestBuilder {
 
-	public static Page createPage(String input, String output, String title, String subtitle, String description, boolean includeCarousel){
+	public static Page createPage(String input, String output, String title, String subtitle, String description, boolean includeCarousel, Site site){
 		Page p = new Page();
 		p.setDescription(description);
 		p.setTitle(title);
@@ -28,6 +28,7 @@ public class TestBuilder {
 		p.setIncludeCarousel(includeCarousel);
 		p.setInput(input);
 		p.setOutput(output);
+		p.setSite(site);
 		return p;
 	}
 

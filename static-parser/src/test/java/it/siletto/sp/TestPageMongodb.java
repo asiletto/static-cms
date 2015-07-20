@@ -1,47 +1,17 @@
 package it.siletto.sp;
 
-import it.siletto.sp.dto.MenuItem;
-import it.siletto.sp.dto.NavBar;
+import it.siletto.sp.dto.BaseEntity;
 import it.siletto.sp.dto.Page;
 import it.siletto.sp.dto.Site;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
+import org.mongodb.morphia.Datastore;
 
-import freemarker.template.Configuration;
-import freemarker.template.Template;
-import freemarker.template.TemplateException;
-
-public class TestPage {
-
-	static String[] templateDir = new String[]{
-		"src/test/resources/template/includes/",
-		"src/test/resources/template/pages/",
-		"src/main/resources/template/includes/",
-		"src/main/resources/template/pages/"
-		};
-	static String staticDir = "src/main/resources/template/staticFiles/";
-	static String outputDir = "target/site/";
-	static Configuration cfg;
+public class TestPageMongodb {
 	
 	public static void main(String[] args) throws Exception {
-
-		//copy static files
-		new File(outputDir).delete();
-		new File(outputDir).mkdirs();
-		FileUtils.copyDirectoryToDirectory(new File(staticDir+"css"), new File(outputDir));
-		FileUtils.copyDirectoryToDirectory(new File(staticDir+"font-awesome"), new File(outputDir));
-		FileUtils.copyDirectoryToDirectory(new File(staticDir+"fonts"), new File(outputDir));
-		FileUtils.copyDirectoryToDirectory(new File(staticDir+"js"), new File(outputDir));
-		
-		cfg = TestBuilder.configuration(templateDir);
 
 		Site site = TestBuilder.localSite();
 		site.setNavbar(TestBuilder.navbar());
@@ -64,52 +34,19 @@ public class TestPage {
 		pages.add(TestBuilder.createPage("pricing.ftl", "pricing.html", "Pricing", "Subheading", "test freemarker", false, site));
 		pages.add(TestBuilder.createPage("services.ftl", "services.html", "Services", "Subheading", "test freemarker", false, site));
 		pages.add(TestBuilder.createPage("sidebar.ftl", "sidebar.html", "Sidebar", "Subheading", "test freemarker", false, site));
+
+		Datastore ds = MongoDB.instance().getDatabase(new Class[]{BaseEntity.class});
+
+		ds.save(site.getNavbar());
+
+		ds.save(site);
 		
 		for (Page page : pages) {
-			writePage(site, page);
+			ds.save(page);
 		}
 		
-
+		System.exit(0);
 	  }
 
-	public static void writePage(Site site, Page page) throws IOException, TemplateException{
-	    Template template = cfg.getTemplate(page.getInput());
-
-	    resetNavBar(site, page);
-	    selectMenus(site, page);
-	    
-	    HashMap<String,Object> data = new HashMap<String,Object>();
-	    data.put("site", site);
-	    data.put("page", page);
-
-	    
-	    Writer fileWriter = new FileWriter(new File(outputDir+page.getOutput()));
-	    try {
-	      template.process(data, fileWriter);
-	    } finally {
-	      fileWriter.close();
-	    }
-	}
-
-	private static void selectMenus(Site site, Page page) {
-		for(MenuItem first : site.getNavbar().getMenu()){
-			if(page.getOutput().equals(first.getHref()))
-				first.setSelected(true);
-			for(MenuItem second : first.getChildrens())
-				if(page.getOutput().equals(second.getHref())){
-					second.setSelected(true);
-					first.setSelected(true);
-				}
-		}
-	}
-
-	private static void resetNavBar(Site site, Page page) {
-		for(MenuItem first : site.getNavbar().getMenu()){
-			first.setSelected(false);
-			for(MenuItem second : first.getChildrens()){
-				second.setSelected(false);
-			}
-		}
-	}
 	
 }

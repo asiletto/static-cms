@@ -1,5 +1,6 @@
 package it.siletto.sp.dto;
 
+
 public class Anchor {
 
 	private String href;

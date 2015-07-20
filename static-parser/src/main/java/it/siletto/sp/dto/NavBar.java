@@ -2,9 +2,13 @@ package it.siletto.sp.dto;
 
 import java.util.List;
 
-public class NavBar {
+import org.mongodb.morphia.annotations.Entity;
+
+@Entity(value = "navbar")
+public class NavBar extends BaseEntity {
 
 	private Anchor brand;
+	
 	private List<MenuItem> menu;
 
 	public Anchor getBrand() {

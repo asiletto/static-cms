@@ -1,6 +1,10 @@
 package it.siletto.sp.dto;
 
-public class Page {
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Reference;
+
+@Entity(value = "page")
+public class Page extends BaseEntity {
 
 	private String title;
 	private String subtitle;
@@ -8,6 +12,9 @@ public class Page {
 	private Boolean includeCarousel;
 	private String input;
 	private String output;
+	
+	@Reference
+	private Site site;
 	
 	public String getTitle() {
 		return title;
@@ -44,6 +51,12 @@ public class Page {
 	}
 	public void setSubtitle(String subtitle) {
 		this.subtitle = subtitle;
+	}
+	public Site getSite() {
+		return site;
+	}
+	public void setSite(Site site) {
+		this.site = site;
 	}
 
 	

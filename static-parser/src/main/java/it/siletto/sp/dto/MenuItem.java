@@ -5,6 +5,7 @@ import java.util.List;
 public class MenuItem extends Anchor {
 
 	private List<MenuItem> childrens;
+
 	private Boolean selected;
 	
 	public Boolean hasChildrens(){
