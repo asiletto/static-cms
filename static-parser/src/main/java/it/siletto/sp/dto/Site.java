@@ -9,33 +9,12 @@ public class Site extends BaseEntity {
 
 	@Id
 	private String id;
-	private String jqueryJs;
-	private String bootstrapJs;
-	private String bootstrapCss;
 	private String copyright;
 	private String author;
 
 	@Reference
 	private NavBar navbar;
   
-	public String getJqueryJs() {
-		return jqueryJs;
-	}
-	public void setJqueryJs(String jqueryJs) {
-		this.jqueryJs = jqueryJs;
-	}
-	public String getBootstrapJs() {
-		return bootstrapJs;
-	}
-	public void setBootstrapJs(String bootstrapJs) {
-		this.bootstrapJs = bootstrapJs;
-	}
-	public String getBootstrapCss() {
-		return bootstrapCss;
-	}
-	public void setBootstrapCss(String bootstrapCss) {
-		this.bootstrapCss = bootstrapCss;
-	}
 	public String getCopyright() {
 		return copyright;
 	}

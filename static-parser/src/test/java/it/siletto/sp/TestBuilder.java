@@ -30,7 +30,6 @@ public class TestBuilder {
 		p.setDescription(description);
 		p.setTitle(title);
 		p.setSubtitle(subtitle);
-		p.setIncludeCarousel(includeCarousel);
 		p.setInput(input);
 		p.setOutput(output);
 		p.setSite(site);
@@ -45,9 +44,6 @@ public class TestBuilder {
 			s = new Site();
 
 		s.setId("my.site.it");
-		s.setBootstrapCss("css/bootstrap.min.css");
-		s.setBootstrapJs("js/bootstrap.min.js");
-		s.setJqueryJs("js/jquery.js");
 		s.setCopyright("Copyright &copy; Your Website 2014");
 		s.setAuthor("arthropods.eu");
 		return s;
@@ -59,9 +55,6 @@ public class TestBuilder {
 			s = new Site();
 
 		s.setId("my.site.it");
-		s.setBootstrapCss("//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css");
-		s.setBootstrapJs("//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js");
-		s.setJqueryJs("//code.jquery.com/jquery-1.11.3.min.js");
 		s.setCopyright("Copyright &copy; Your Website 2014");
 		s.setAuthor("arthropods.eu");
 		return s;

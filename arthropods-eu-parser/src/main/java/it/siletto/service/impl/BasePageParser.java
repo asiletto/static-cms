@@ -54,8 +54,6 @@ public class BasePageParser extends AbstractParser implements MarkdownParser<Pag
 					page.setDescription(line.substring("DESCRIPTION:".length()).trim());
 				}else if(line.startsWith("INPUT:")){
 					page.setInput(line.substring("INPUT:".length()).trim());
-				}else if(line.startsWith("CAROUSEL:")){
-					page.setIncludeCarousel(Boolean.parseBoolean(line.substring("CAROUSEL:".length()).trim()));
 				}
 			}
 		}
@@ -70,8 +68,6 @@ public class BasePageParser extends AbstractParser implements MarkdownParser<Pag
 		Page page = service.getPage(site.getId(), pageOutput);
 		if(page==null)
 			page = new Page();
-
-		page.setIncludeCarousel(false);
 		return page;
 	}
 

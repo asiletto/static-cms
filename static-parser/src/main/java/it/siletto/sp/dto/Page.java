@@ -14,7 +14,6 @@ public class Page extends BaseEntity {
 	private String title;
 	private String subtitle;
 	private String description;
-	private Boolean includeCarousel;
 	private String input;
 	private String output;
 	
@@ -32,12 +31,6 @@ public class Page extends BaseEntity {
 	}
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	public Boolean getIncludeCarousel() {
-		return includeCarousel;
-	}
-	public void setIncludeCarousel(Boolean includeCarousel) {
-		this.includeCarousel = includeCarousel;
 	}
 	public String getInput() {
 		return input;

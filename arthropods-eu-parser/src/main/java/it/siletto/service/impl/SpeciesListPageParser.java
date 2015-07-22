@@ -28,7 +28,6 @@ public class SpeciesListPageParser extends AbstractParser implements MarkdownPar
 		page.setOutput(pagePath);
 		page.setId(site.getId() + page.getOutput());
 		page.setSite(site);
-		page.setIncludeCarousel(false);
 		return page;
 	}
 	

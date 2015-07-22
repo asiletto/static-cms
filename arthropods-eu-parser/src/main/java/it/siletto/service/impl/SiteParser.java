@@ -29,15 +29,6 @@ public class SiteParser extends AbstractParser implements MarkdownParser<Site>{
 				if(line.startsWith("COPYRIGHT:")){
 					site.setCopyright(line.substring("COPYRIGHT:".length()).trim());
 				}
-				if(line.startsWith("JQUERY:")){
-					site.setJqueryJs(line.substring("JQUERY:".length()).trim());
-				}
-				if(line.startsWith("BOOTSTRAP:")){
-					site.setBootstrapJs(line.substring("BOOTSTRAP:".length()).trim());
-				}
-				if(line.startsWith("BOOTSTRAPCSS:")){
-					site.setBootstrapCss(line.substring("BOOTSTRAPCSS:".length()).trim());
-				}
 			}
 		}
 		return site;
