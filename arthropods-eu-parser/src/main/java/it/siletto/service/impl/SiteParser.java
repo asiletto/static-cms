@@ -28,7 +28,16 @@ public class SiteParser extends AbstractParser implements MarkdownParser<Site>{
 				
 				if(line.startsWith("COPYRIGHT:")){
 					site.setCopyright(line.substring("COPYRIGHT:".length()).trim());
+				}else if(line.startsWith("GOOGLE_KEY:")){
+					site.setGoogleKey(line.substring("GOOGLE_KEY:".length()).trim());
+				}else if(line.startsWith("FACEBOOK_KEY:")){
+					site.setFacebookKey(line.substring("FACEBOOK_KEY:".length()).trim());
+				}else if(line.startsWith("OAUTH_REDIRECT:")){
+					site.setOauthRedirect(line.substring("OAUTH_REDIRECT:".length()).trim());
+				}else if(line.startsWith("BACKEND_URL:")){
+					site.setBackendUrl(line.substring("BACKEND_URL:".length()).trim());
 				}
+
 			}
 		}
 		return site;

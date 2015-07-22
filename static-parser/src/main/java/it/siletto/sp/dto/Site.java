@@ -11,6 +11,11 @@ public class Site extends BaseEntity {
 	private String id;
 	private String copyright;
 	private String author;
+	
+	private String googleKey;
+	private String facebookKey;
+	private String oauthRedirect;
+	private String backendUrl;
 
 	@Reference
 	private NavBar navbar;
@@ -38,6 +43,30 @@ public class Site extends BaseEntity {
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	public String getGoogleKey() {
+		return googleKey;
+	}
+	public void setGoogleKey(String googleKey) {
+		this.googleKey = googleKey;
+	}
+	public String getFacebookKey() {
+		return facebookKey;
+	}
+	public void setFacebookKey(String facebookKey) {
+		this.facebookKey = facebookKey;
+	}
+	public String getOauthRedirect() {
+		return oauthRedirect;
+	}
+	public void setOauthRedirect(String oauthRedirect) {
+		this.oauthRedirect = oauthRedirect;
+	}
+	public String getBackendUrl() {
+		return backendUrl;
+	}
+	public void setBackendUrl(String backendUrl) {
+		this.backendUrl = backendUrl;
 	}
 
 }
