@@ -1,14 +1,14 @@
 package it.siletto.sp;
 
-import it.siletto.sp.dto.BaseEntity;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Logger;
 
+import org.apache.commons.lang.StringUtils;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 
@@ -19,9 +19,6 @@ import com.mongodb.ReadPreference;
 import com.mongodb.ServerAddress;
 import com.mongodb.WriteConcern;
 
-/**
- * MongoDB providing the database connection for main.
- */
 public class MongoDB {
 
 	private static final Logger LOG = Logger.getLogger(MongoDB.class.getName());
@@ -56,8 +53,13 @@ public class MongoDB {
 		String hostname = (String) props.get("hostname");
 		String port = (String) props.get("port");
 
-		MongoCredential credential = MongoCredential.createCredential(username, database, password.toCharArray());
-		MongoClient mongoClient = new MongoClient(new ServerAddress(hostname, Integer.parseInt(port)), Arrays.asList(credential), mongoOptions);
+		List<MongoCredential> credentials = new ArrayList<MongoCredential>();
+		if(StringUtils.isNotEmpty(username) && StringUtils.isNotEmpty(password))
+			credentials.add(
+				MongoCredential.createCredential(username, database, password.toCharArray())					
+			);
+		
+		MongoClient mongoClient = new MongoClient(new ServerAddress(hostname, Integer.parseInt(port)), credentials, mongoOptions);
 		mongoClient.setWriteConcern(WriteConcern.SAFE);
 		
 		Morphia morphia = new Morphia();

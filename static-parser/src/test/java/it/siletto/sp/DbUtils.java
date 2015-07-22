@@ -1,6 +1,5 @@
-package it.siletto.sp.utils;
+package it.siletto.sp;
 
-import it.siletto.sp.MongoDB;
 import it.siletto.sp.dto.BaseEntity;
 
 import java.io.FileInputStream;

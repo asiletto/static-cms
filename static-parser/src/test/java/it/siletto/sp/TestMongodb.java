@@ -1,7 +1,5 @@
 package it.siletto.sp;
 
-import it.siletto.sp.utils.DbUtils;
-
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Properties;

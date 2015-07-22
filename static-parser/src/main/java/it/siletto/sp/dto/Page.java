@@ -10,6 +10,7 @@ public class Page extends BaseEntity {
 	@Id
 	private String id;
 	
+	private String path;
 	private String title;
 	private String subtitle;
 	private String description;
@@ -67,6 +68,12 @@ public class Page extends BaseEntity {
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	public String getPath() {
+		return path;
+	}
+	public void setPath(String path) {
+		this.path = path;
 	}
 	
 }
