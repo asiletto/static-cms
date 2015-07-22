@@ -7,9 +7,9 @@ import java.util.List;
 
 public class WriteToMongodb extends BaseBatch {
 	
-	static String outputDir = "target/site/";
+	static String outputDir = "D:/dev/workspaces/personale/arthropods.eu/site";
 
-	static String baseDir = "D:/dev/workspaces/personale/arthropods.eu/arthropods-eu-content/";
+	static String baseDir = "D:/dev/workspaces/personale/arthropods.eu/private/arthropods-eu-content/";
 	
 	public static void main(String[] args) throws Exception {
 		execute(true);

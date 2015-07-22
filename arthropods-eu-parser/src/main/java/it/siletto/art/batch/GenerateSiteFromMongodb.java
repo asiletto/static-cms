@@ -32,7 +32,7 @@ import freemarker.template.Version;
 
 public class GenerateSiteFromMongodb extends BaseBatch {
 
-	static String baseStatic = "D:/dev/workspaces/personale/arthropods.eu/arthropods-eu-content/";
+	static String baseStatic = "D:/dev/workspaces/personale/arthropods.eu/private/arthropods-eu-content/";
 
 	static String inputSite = baseStatic+"site/";
 	static String staticPages = baseStatic+"pages/";
@@ -41,7 +41,7 @@ public class GenerateSiteFromMongodb extends BaseBatch {
 		baseStatic+"templates/pages/"
 		};
 	static String staticDir = baseStatic+"static/";
-	static String outputDir = "target/site/";
+	static String outputDir = "D:/dev/workspaces/personale/arthropods.eu/site";
 	static Configuration cfg;
 	
 	public static void main(String[] args) throws Exception {

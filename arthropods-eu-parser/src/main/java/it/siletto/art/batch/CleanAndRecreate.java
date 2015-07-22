@@ -14,7 +14,7 @@ public class CleanAndRecreate {
 		System.out.println("write");
 		WriteToMongodb.execute(false);
 		
-		FileUtils.deleteDirectory(new File("target/site"));
+		FileUtils.deleteDirectory(new File("D:/dev/workspaces/personale/arthropods.eu/site"));
 		
 		System.out.println("generate");
 		GenerateSiteFromMongodb.execute(false);
