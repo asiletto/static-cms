@@ -126,12 +126,13 @@ public class PageBuilderImpl implements PageBuilder {
 		
 		for (SpeciesListPage speciesList : listSpecies) {
 			List<SpeciesDetailPage> speciesDetail = mapSpecies.get(speciesList.getPath());
-			for (SpeciesDetailPage speciesDetailPage : speciesDetail) {
-				Anchor parent = new Anchor();
-				parent.setHref(speciesList.getOutput());
-				parent.setLabel(speciesList.getTitle());
-				speciesDetailPage.setParent(parent);
-			}
+			if(speciesDetail!=null)
+				for (SpeciesDetailPage speciesDetailPage : speciesDetail) {
+					Anchor parent = new Anchor();
+					parent.setHref(speciesList.getOutput());
+					parent.setLabel(speciesList.getTitle());
+					speciesDetailPage.setParent(parent);
+				}
 			speciesList.setSpecies(speciesDetail);
 		}
 		

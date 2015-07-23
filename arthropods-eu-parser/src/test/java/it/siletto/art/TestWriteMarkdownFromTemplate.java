@@ -13,10 +13,10 @@ public class TestWriteMarkdownFromTemplate {
 
 	public static void main(String[] args) throws Exception {
 		
-		String basePath = "D:/dev/workspaces/personale/arthropods.eu/arthropods-eu-content/site/";
+		String basePath = "D:/dev/workspaces/personale/arthropods.eu/private/arthropods-eu-content/site/";
 		
-		String template = FileUtils.readFileToString(new File("template.md"));
-		String list = FileUtils.readFileToString(new File("list.md"));
+		String template = FileUtils.readFileToString(new File("src/test/java/template.md"));
+		String list = FileUtils.readFileToString(new File("src/test/java/list.md"));
 		
 		File path = new File(basePath);
 		Collection<File> templates = FileUtils.listFiles(path, new String[]{"md"}, true);
