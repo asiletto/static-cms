@@ -100,6 +100,7 @@ public class GenerateSiteFromMongodb extends BaseBatch {
 		FileUtils.copyDirectoryToDirectory(new File(staticDir+"fonts"), new File(outputDir));
 		FileUtils.copyDirectoryToDirectory(new File(staticDir+"js"), new File(outputDir));
 		FileUtils.copyDirectoryToDirectory(new File(staticDir+"images"), new File(outputDir));
+		FileUtils.copyDirectoryToDirectory(new File(staticDir+"ajax"), new File(outputDir));
 		
 
 		FileFilter filter = FileFilterUtils.or(
