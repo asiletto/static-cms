@@ -109,7 +109,8 @@ public class GenerateSiteFromMongodb extends BaseBatch {
 			FileFilterUtils.and(FileFileFilter.FILE, FileFilterUtils.suffixFileFilter(".jpeg")),
 			FileFilterUtils.and(FileFileFilter.FILE, FileFilterUtils.suffixFileFilter(".png")),
 			FileFilterUtils.and(FileFileFilter.FILE, FileFilterUtils.suffixFileFilter(".gif")),
-			FileFilterUtils.and(FileFileFilter.FILE, FileFilterUtils.suffixFileFilter(".html"))
+			FileFilterUtils.and(FileFileFilter.FILE, FileFilterUtils.suffixFileFilter(".html")),
+			FileFilterUtils.and(FileFileFilter.FILE, FileFilterUtils.suffixFileFilter(".ico"))
 		);
 		
 		FileUtils.copyDirectory(new File(inputSite), new File(outputDir), filter);		
