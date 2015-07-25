@@ -4,7 +4,7 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Reference;
 
-@Entity(value = "site")
+@Entity(value = "site_sites")
 public class Site extends BaseEntity {
 
 	@Id

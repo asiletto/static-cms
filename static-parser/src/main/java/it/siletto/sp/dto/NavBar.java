@@ -5,7 +5,7 @@ import java.util.List;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 
-@Entity(value = "navbar")
+@Entity(value = "site_navbars")
 public class NavBar extends BaseEntity {
 
 	@Id
