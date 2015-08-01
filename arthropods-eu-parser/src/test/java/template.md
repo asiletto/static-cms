@@ -1,5 +1,7 @@
 INPUT: species-detail.ftl
 DESCRIPTION: this is the meta description
+SPECIESID: ${SPECIESID}
+GENUSID: ${GENUSID}
 
 # SPECIESNAME
 
